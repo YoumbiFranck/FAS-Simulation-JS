@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="de" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fahrstreifenwechselassistent </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <style>
+        header.smaller {
+            height: 75px;
+        }
+
+        header.smaller h1#logo {
+            width: 150px;
+            height: 75px;
+            line-height: 55px;
+            font-size: 55px;
+            margin: 0;
+        }
+
+        header.smaller nav a {
+            line-height: 75px;
+        }
+
+        *,
+        *:before,
+        *:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body {
+            color: #505050;
+            font-family: "Open Sans", sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1;
+            font-weight: 100;
+            color: #77C7AC;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fcfcfc;
+            font-weight: 300;
+        }
+
+        a:hover {
+            color: #3c3c3c;
+        }
+
+        #wrapper {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        #main {
+            background-color: #fff;
+            padding-top: 150px;
+            min-height:500px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        section h1 {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        section p {
+            margin-bottom: 30px;
+        }
+
+        section p:last-child {
+            margin-bottom: 0;
+        }
+
+        section.color {
+            background-color: #f4f4f4;
+        }
+
+        header {
+            width: 100%;
+            height: 6em;
+            /** height: 10em;**/
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            border-bottom:solid 0.5em #f4f4f4;
+            background-color: #394e63;
+            transition: height 0.3s;
+        }
+
+        header h1#logo {
+            display: inline-block;
+            line-height: 1.5em;
+            margin: 0;
+            padding:0 1em;
+            background-color:#80ba24;
+            float: left;
+            font-family: "Open Sans", sans-serif;
+            font-size: 60px;
+            color: #fcfcfc;
+            text-shadow: 0.1em 0.03em #80ba24;
+            font-weight: 400;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -ms-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        header nav {
+            display: inline-block;
+            float: right;
+        }
+
+        header nav a {
+            line-height: 100px;
+            margin-left: 20px;
+            color: #fcfcfc;
+            font-weight: 300;
+            font-size: 1em;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -ms-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        header nav a:hover {
+            color: #fd5559;
+        }
+
+        header.smaller {
+            height: 75px;
+        }
+
+        header.smaller h1#logo {
+            line-height: 75px;
+            font-size: 30px;
+        }
+
+        header.smaller nav a {
+            line-height: 75px;
+        }
+
+        footer {
+            background-color: #3c3c3c;
+            text-align: center;
+            min-height:17em;
+            color: #bababa;
+        }
+
+        footer  a {
+            display: inline-block;
+            margin: 0;
+            text-decoration:underline;
+        }
+        footer div.col {
+            width:20%;
+            display:inline-block;
+            vertical-align: top;
+        }
+        footer col a {
+            display:block;
+        }
+
+        footer ul li a:hover {
+            color: #fd5559;
+        }
+        footer ul li a {
+            color: #bababa;
+        }
+        footer div#copy {
+            margin-top: 1em;
+            padding:0;
+        }
+        footer div#copy a {
+            color: #fd5559;
+        }
+        footer div.container {
+            position:relative;
+
+        }
+        footer ul{
+            list-style:none;
+            margin-top:2em;
+            padding:0;
+        }
+        footer ul li {
+            text-align:left;
+            margin:0;
+            padding:0;
+        }
+
+        .clearfix:after {
+            visibility: hidden;
+            display: block;
+            content: "";
+            clear: both;
+            height: 0;
+        }
+
+        @media all and (max-width: 760px) {
+            header h1#logo {
+                display: block;
+                float: none;
+                margin: 0 auto;
+                height: 100px;
+                line-height: 80px;
+                text-align: center;
+            }
+
+            header nav {
+                display: block;
+                float: none;
+                height: 50px;
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            header nav a {
+                line-height: 50px;
+                margin: 0 10px;
+            }
+
+            header.smaller {
+                height: 75px;
+            }
+
+            header.smaller h1#logo {
+                height: 40px;
+                line-height: 40px;
+                font-size: 30px;
+                width:100%;
+            }
+
+            header.smaller nav {
+                height: 35px;
+            }
+
+            header.smaller nav a {
+                line-height: 35px;
+            }
+            footer div.col {
+                width:100%;
+                display:inline-block;
+                vertical-align: top;
+            }
+            footer ul li {
+                display:inline-block;
+                margin:0 0.5em;
+                float:left;
+            }
+
+        }
+
+        @media all and (max-width: 600px) {
+            .container {
+                width: 100%;
+            }
+
+            footer a {
+                display: block;
+            }
+            .img-2 iframe{
+                width: 300px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+<div id="wrapper">
+    <header id="js-header">
+        <div class="container clearfix">
+            <h1 id="logo">THM</h1>
+            <nav>
+                <a href="simulation.html">Simulation</a>
+                <a href="#sausage">Github Quellcode</a>
+                <a href="#">Quiz</a>
+            </nav>
+        </div>
+    </header>
+
+    <div id="main">
+        <div id="content">
+            <section>
+                <div class="container">
+                    <h1>Grobe Beschreibung des FAS</h1>
+                    <div class="img-2" style="margin: 20px 0 10px 0">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/pxtomtGqEys" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                        <p>Er nutzt radarbasierte Technologie, um den Verkehrsraum neben und hinter dem Fahrzeug zu überwachen. Wenn sich ein anderes Fahrzeug
+                            im überwachten Bereich befindet oder sich schnell annähert, wird der Fahrer durch das System benachrichtigt. Es gibt drei Arten von
+                            Fahrstreifenwechselassistenten:</p>
+                    <ul>
+                        <li>
+                            Passive Systeme: akustische oder optische Warnungen bei unbeabsichtigtem Verlassen der Fahrspur
+                        </li>
+                        <li>
+                            Aktive Systeme: Lenk- und Bremseingriffe zur Unterstützung des Fahrers beim Spurwechsel
+                        </li>
+                        <li>
+                            Automatische Systeme: Hinderniserkennung in der benachbarten Fahrspur und sicheres Durchführen des Spurwechsels bei ausreichendem Abstand.
+                        </li>
+                    </ul>
+                    <p><a style="color: inherit; text-decoration-line: underline" href="simulation.html">Simulation starten</a> 😉</p>
+                </div>
+            </section>
+            <section class="color">
+                <div class="container">
+                    <h1>Bedarf eines FAS</h1>
+                    <p>Beim Spurwechsel im Straßenverkehr ist der tote Winkel eine der größten Gefahren, da dort andere Fahrzeuge übersehen werden können. Statistiken zeigen, dass falsche Fahrstreifenwechsel zu Unfällen führen können. Ein Fahrstreifenwechselassistent kann helfen, die Aufgabe zu erleichtern und den Fahrer zu entlasten, insbesondere bei langen Fahrten, bei denen Müdigkeit eine Rolle spielt.</p>
+                </div>
+            </section>
+            <section>
+                <div class="container">
+                    <h1>Kategorisierung und Begründung der Kategorie</h1>
+                    <p>
+                        Jedoch ist es wichtig zu betrachten, dass ein Fahrstreifenwechselassistent kein autonomes System ist. Er hat zwar einen unmittelbaren Einfluss auf die Fahrzeugsteuerung, aber wird nur mit der Zustimmung des Fahrers aktiviert. Er ist also eine Komfortfunktion, die den Fahrer unterstützt, deshalb müssen die Fahrer aufmerksam bleiben und nicht dem System blind vertrauen.
+                    </p>
+
+                </div>
+            </section>
+        </div>
+    </div>
+    <footer>
+        <div class="container clearfix" >
+            <div  id="copy">&#xa9; built by <a  style="margin-top: 70px" href="https://www.linkedin.com/in/franck-youmbi-7444031ba">@Youmbi Franck</a> <span id="date"></span> </div>
+        </div>
+    </footer>
+</div>
+
+
+<script>
+    let date = document.getElementById("date");
+    function resizeHeaderOnScroll() {
+
+        const distanceY = window.pageYOffset || document.documentElement.scrollTop,
+            shrinkOn = 200,
+            headerEl = document.getElementById('js-header');
+
+        if (distanceY > shrinkOn) {
+            headerEl.classList.add("smaller");
+        } else {
+            headerEl.classList.remove("smaller");
+        }
+    }
+
+    window.addEventListener('scroll', resizeHeaderOnScroll);
+    //# sourceURL=pen.js
+    let today = new Date();
+    let yyyy = today.getFullYear();
+    date.innerText = yyyy;
+
+
+</script>
+
+
+</body>
+
+</html>
